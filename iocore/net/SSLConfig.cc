@@ -805,8 +805,8 @@ SSLConfigParams::getCTX(const std::string &client_cert, const std::string &key_f
 
     // Set public and private keys
     if (!client_cert.empty()) {
-      std::string_view secret_data;
-      std::string_view secret_key_data;
+      std::string secret_data;
+      std::string secret_key_data;
 
       // Fetch the client_cert data
       std::string completeSecretPath{Layout::get()->relative_to(this->clientCertPathOnly, client_cert)};
