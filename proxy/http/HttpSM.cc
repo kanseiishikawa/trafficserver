@@ -7869,6 +7869,8 @@ HttpSM::set_next_state()
     // If we're in state SEND_API_RESPONSE_HDR, it means functions
     // registered to hook SEND_RESPONSE_HDR have already been called. So we do not
     // need to call do_api_callout. Otherwise TS loops infinitely in this state !
+
+    do_drain_request_body(t_state.hdr_info.client_response);
     if (t_state.api_next_action == HttpTransact::SM_ACTION_API_SEND_RESPONSE_HDR) {
       handle_api_return();
     } else {
