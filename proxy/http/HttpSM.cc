@@ -7871,9 +7871,9 @@ HttpSM::set_next_state()
     // need to call do_api_callout. Otherwise TS loops infinitely in this state !
     
     if (t_state.api_next_action == HttpTransact::SM_ACTION_API_SEND_RESPONSE_HDR) {
-      do_drain_request_body(t_state.hdr_info.client_response);
       handle_api_return();
     } else {
+      do_drain_request_body(t_state.hdr_info.client_response);
       t_state.api_next_action = HttpTransact::SM_ACTION_API_SEND_RESPONSE_HDR;
       do_api_callout();
     }
